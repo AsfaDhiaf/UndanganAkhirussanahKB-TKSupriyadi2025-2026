@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Undangan Akhirussanah KB-TK Supriyadi</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #F0D080;
+    --gold-dark: #8B6914;
+    --maroon: #7B1A1A;
+    --maroon-dark: #4A0E0E;
+    --cream: #FFF8EC;
+    --brown: #5C3A1E;
+    --green: #2D6A4F;
+    --green-light: #52B788;
+    --batik-bg: #1A0A00;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--batik-bg);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ===== FLOATING DECORATIONS ===== */
+  .floating-leaves {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .leaf {
+    position: absolute;
+    font-size: 1.5rem;
+    animation: floatLeaf linear infinite;
+    opacity: 0.5;
+  }
+  @keyframes floatLeaf {
+    0% { transform: translateY(-50px) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.5; }
+    90% { opacity: 0.3; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* ===== BATIK PATTERN OVERLAY ===== */
+  .batik-pattern {
+    position: fixed;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(201,168,76,0.04) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(123,26,26,0.06) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ===== SCREEN CONTAINER ===== */
+  .screen {
+    display: none;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+  }
+  .screen.active { display: flex; }
+
+  /* ===== WELCOME / NAME PICKER SCREEN ===== */
+  #welcome-screen {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+  }
+
+  .welcome-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      linear-gradient(180deg, #1A0A00 0%, #2D1500 50%, #1A0A00 100%);
+    z-index: -1;
+  }
+
+  /* Ornamen sudut */
+  .corner-ornament {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    opacity: 0.6;
+  }
+  .corner-ornament svg { width: 100%; height: 100%; }
+  .corner-ornament.tl { top: 0; left: 0; }
+  .corner-ornament.tr { top: 0; right: 0; transform: scaleX(-1); }
+  .corner-ornament.bl { bottom: 0; left: 0; transform: scaleY(-1); }
+  .corner-ornament.br { bottom: 0; right: 0; transform: scale(-1); }
+
+  .welcome-card {
+    background: linear-gradient(145deg, rgba(201,168,76,0.12), rgba(90,30,0,0.3));
+    border: 2px solid var(--gold);
+    border-radius: 24px;
+    padding: 3rem 2.5rem;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 60px rgba(201,168,76,0.2), inset 0 0 60px rgba(0,0,0,0.3);
+    animation: cardAppear 1s ease-out forwards;
+  }
+
+  @keyframes cardAppear {
+    from { opacity: 0; transform: translateY(40px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .welcome-card::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 18px;
+    pointer-events: none;
+  }
+
+  .school-emblem {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.2rem;
+    background: radial-gradient(circle, var(--gold), var(--gold-dark));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    box-shadow: 0 0 30px rgba(201,168,76,0.5);
+    animation: pulse-glow 2s ease-in-out infinite;
+    overflow: hidden;
+    padding: 5px;
+  }
+
+  .logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(201,168,76,0.5); }
+    50% { box-shadow: 0 0 50px rgba(201,168,76,0.8), 0 0 80px rgba(201,168,76,0.3); }
+  }
+
+  .welcome-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1rem;
+    color: var(--gold-light);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+    animation: shimmer 3s linear infinite;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% center; }
+    100% { background-position: -200% center; }
+  }
+
+  .welcome-subtitle {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+    animation: shimmer 3s linear infinite;
+    background: linear-gradient(90deg, var(--gold), #fff0b0, var(--gold));
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .welcome-desc {
+    color: rgba(255,248,236,0.7);
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+
+  .divider-ornament {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.2rem 0;
+    color: var(--gold);
+  }
+  .divider-ornament::before, .divider-ornament::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .picker-label {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--gold-light);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .search-box {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+  .search-box input {
+    width: 100%;
+    padding: 0.8rem 1.2rem 0.8rem 2.8rem;
+    background: rgba(201,168,76,0.08);
+    border: 1.5px solid rgba(201,168,76,0.4);
+    border-radius: 50px;
+    color: var(--cream);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: all 0.3s;
+  }
+  .search-box input::placeholder { color: rgba(255,248,236,0.4); }
+  .search-box input:focus { border-color: var(--gold); box-shadow: 0 0 20px rgba(201,168,76,0.2); }
+  .search-box .search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold);
+    font-size: 1rem;
+  }
+
+  .names-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    max-height: 280px;
+    overflow-y: auto;
+    padding-right: 4px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold) transparent;
+  }
+  .names-grid::-webkit-scrollbar { width: 4px; }
+  .names-grid::-webkit-scrollbar-track { background: transparent; }
+  .names-grid::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+  .name-btn {
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 10px;
+    color: var(--cream);
+    padding: 0.7rem 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .name-btn:hover {
+    background: rgba(201,168,76,0.25);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(201,168,76,0.2);
+    color: var(--gold-light);
+  }
+  .name-btn.selected {
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    border-color: var(--gold-light);
+    color: var(--maroon-dark);
+    font-weight: 600;
+  }
+
+  .no-result {
+    grid-column: 1/-1;
+    text-align: center;
+    color: rgba(255,248,236,0.4);
+    padding: 1rem;
+    font-size: 0.85rem;
+  }
+
+  .enter-btn {
+    margin-top: 1.5rem;
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
+    border: none;
+    border-radius: 50px;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.9rem;
+    color: var(--maroon-dark);
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.1em;
+    transition: all 0.3s;
+    box-shadow: 0 4px 20px rgba(201,168,76,0.4);
+    display: none;
+  }
+  .enter-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(201,168,76,0.6);
+  }
+  .enter-btn.visible { display: block; animation: fadeInUp 0.5s ease-out; }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== TRANSITION SCREEN ===== */
+  #transition-screen {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #1A0A00, #2D0A0A);
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+  }
+  .transition-content {
+    text-align: center;
+    animation: fadeIn 0.5s ease-out;
+  }
+  .transition-emoji { font-size: 5rem; animation: bounce 0.8s ease-in-out infinite alternate; }
+  @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-20px); } }
+  .transition-text {
+    font-family: 'Cinzel Decorative', serif;
+    color: var(--gold-light);
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    animation: shimmer 2s linear infinite;
+    background: linear-gradient(90deg, var(--gold), #fff0b0, var(--gold));
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .transition-name {
+    font-family: 'Playfair Display', serif;
+    color: var(--cream);
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    font-style: italic;
+  }
+
+  /* ===== MAIN INVITATION SCREEN ===== */
+  #invitation-screen {
+    flex-direction: column;
+    align-items: center;
+    background: #1A0A00;
+  }
+
+  /* HERO SECTION */
+  .hero {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 3rem 1.5rem;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(123,26,26,0.4) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 30% 80%, rgba(201,168,76,0.1) 0%, transparent 60%),
+      linear-gradient(180deg, #0D0500 0%, #200800 30%, #2D1500 60%, #1A0800 100%);
+  }
+
+  /* Batik border top */
+  .batik-border {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 8px;
+    background: repeating-linear-gradient(90deg, var(--gold-dark) 0px, var(--gold) 10px, var(--gold-light) 20px, var(--gold) 30px, var(--gold-dark) 40px);
+  }
+  .batik-border.bottom { top: auto; bottom: 0; }
+
+  .hero-ornament {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: floatUpDown 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(201,168,76,0.5));
+  }
+  @keyframes floatUpDown {
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-15px) rotate(3deg); }
+  }
+
+  .hero-label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    animation: fadeInUp 1s 0.2s both;
+  }
+
+  .hero-dengan-hormat {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: rgba(255,248,236,0.7);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    animation: fadeInUp 1s 0.3s both;
+  }
+
+  .hero-recipient {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--gold-light);
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    animation: fadeInUp 1s 0.4s both;
+    text-shadow: 0 0 30px rgba(201,168,76,0.4);
+    line-height: 1.2;
+  }
+
+  .hero-recipient-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    color: rgba(255,248,236,0.6);
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 1s 0.5s both;
+    letter-spacing: 0.1em;
+  }
+
+  .invitation-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(255,248,236,0.75);
+    max-width: 380px;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    animation: fadeInUp 1s 0.6s both;
+  }
+
+  .event-title-wrapper {
+    margin: 1rem 0 2rem;
+    animation: fadeInUp 1s 0.7s both;
+  }
+
+  .event-title-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .event-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    line-height: 1.1;
+    animation: shimmer 3s linear infinite;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold-light), var(--gold), var(--gold-light), var(--gold-dark));
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+    filter: drop-shadow(0 0 20px rgba(201,168,76,0.3));
+  }
+
+  .event-subtitle {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1rem;
+    color: var(--gold);
+    margin-top: 0.3rem;
+  }
+
+  /* Scroll button */
+  .scroll-down {
+    animation: fadeInUp 1s 1.2s both;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--gold);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+  .scroll-down .arrow { font-size: 1.5rem; animation: arrowBounce 1.5s ease-in-out infinite; }
+  @keyframes arrowBounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+
+  /* ===== SECTIONS ===== */
+  .section {
+    width: 100%;
+    max-width: 680px;
+    padding: 3rem 1.5rem;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  .section-header .ornament-line {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    justify-content: center;
+  }
+  .ornament-line span { font-size: 1.2rem; }
+  .ornament-line::before, .ornament-line::after {
+    content: '';
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold));
+  }
+  .ornament-line::after { background: linear-gradient(90deg, var(--gold), transparent); }
+
+  .section-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.3rem;
+    color: var(--gold-light);
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 4s linear infinite;
+  }
+
+  /* DETAIL ACARA */
+  .detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  @media (max-width: 400px) {
+    .detail-grid { grid-template-columns: 1fr; }
+  }
+
+  .detail-card {
+    background: linear-gradient(145deg, rgba(201,168,76,0.1), rgba(90,20,0,0.2));
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 16px;
+    padding: 1.5rem 1.2rem;
+    text-align: center;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .detail-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .detail-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+    box-shadow: 0 10px 30px rgba(201,168,76,0.2);
+  }
+  .detail-card .icon { font-size: 2rem; margin-bottom: 0.7rem; }
+  .detail-card .label {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+  .detail-card .value {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--cream);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .detail-card .sub-value {
+    font-size: 0.75rem;
+    color: rgba(255,248,236,0.6);
+    margin-top: 0.2rem;
+  }
+  .detail-card.full-width { grid-column: 1/-1; }
+
+  /* COUNTDOWN */
+  .countdown-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+  .countdown-item {
+    text-align: center;
+    min-width: 70px;
+  }
+  .countdown-number {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(201,168,76,0.3);
+    animation: pulse-glow 2s infinite;
+  }
+  .countdown-label {
+    font-size: 0.65rem;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 0.4rem;
+  }
+
+  /* RUNDOWN */
+  .rundown-list { display: flex; flex-direction: column; gap: 1rem; }
+  .rundown-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    background: rgba(201,168,76,0.05);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 12px;
+    transition: all 0.3s;
+    border-left: 3px solid var(--gold);
+  }
+  .rundown-item:hover { background: rgba(201,168,76,0.1); transform: translateX(4px); }
+  .rundown-time {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.75rem;
+    color: var(--gold);
+    min-width: 70px;
+    padding-top: 0.2rem;
+  }
+  .rundown-desc { flex: 1; }
+  .rundown-title {
+    font-family: 'Playfair Display', serif;
+    color: var(--cream);
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+  .rundown-subtitle {
+    font-size: 0.75rem;
+    color: rgba(255,248,236,0.55);
+    margin-top: 0.1rem;
+  }
+  .rundown-emoji { font-size: 1.5rem; }
+
+  /* PENUTUP */
+  .closing-card {
+    background: linear-gradient(145deg, rgba(123,26,26,0.3), rgba(201,168,76,0.1));
+    border: 1px solid var(--gold);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .closing-card::before {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 16px;
+  }
+  .closing-card .big-emoji { font-size: 4rem; animation: floatUpDown 3s ease-in-out infinite; }
+  .closing-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.3rem;
+    color: var(--gold-light);
+    margin: 1rem 0 0.5rem;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+  }
+  .closing-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: rgba(255,248,236,0.75);
+    font-size: 0.9rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+  .closing-school {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.85rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+
+  /* FOOTER */
+  .footer {
+    width: 100%;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+  .footer-text { font-size: 0.75rem; color: rgba(255,248,236,0.35); }
+
+  /* Confetti */
+  .confetti-piece {
+    position: fixed;
+    width: 10px; height: 10px;
+    z-index: 999;
+    pointer-events: none;
+    animation: confettiFall linear forwards;
+  }
+  @keyframes confettiFall {
+    0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<!-- FLOATING LEAVES -->
+<div class="floating-leaves" id="leaves"></div>
+<div class="batik-pattern"></div>
+
+<!-- ===== WELCOME SCREEN ===== -->
+<div id="welcome-screen" class="screen active">
+  <div class="welcome-bg"></div>
+
+  <!-- Corner Ornaments -->
+  <div class="corner-ornament tl">
+    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 Q60,0 120,60 Q60,60 60,120 Q0,60 0,0Z" fill="rgba(201,168,76,0.15)" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
+      <path d="M10,10 Q55,10 110,65" stroke="rgba(201,168,76,0.3)" stroke-width="0.5"/>
+      <circle cx="10" cy="10" r="4" fill="rgba(201,168,76,0.6)"/>
+      <circle cx="60" cy="60" r="3" fill="rgba(201,168,76,0.4)"/>
+    </svg>
+  </div>
+  <div class="corner-ornament tr">
+    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 Q60,0 120,60 Q60,60 60,120 Q0,60 0,0Z" fill="rgba(201,168,76,0.15)" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
+      <path d="M10,10 Q55,10 110,65" stroke="rgba(201,168,76,0.3)" stroke-width="0.5"/>
+      <circle cx="10" cy="10" r="4" fill="rgba(201,168,76,0.6)"/>
+    </svg>
+  </div>
+  <div class="corner-ornament bl">
+    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 Q60,0 120,60 Q60,60 60,120 Q0,60 0,0Z" fill="rgba(201,168,76,0.15)" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
+      <path d="M10,10 Q55,10 110,65" stroke="rgba(201,168,76,0.3)" stroke-width="0.5"/>
+      <circle cx="10" cy="10" r="4" fill="rgba(201,168,76,0.6)"/>
+    </svg>
+  </div>
+  <div class="corner-ornament br">
+    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 Q60,0 120,60 Q60,60 60,120 Q0,60 0,0Z" fill="rgba(201,168,76,0.15)" stroke="rgba(201,168,76,0.5)" stroke-width="1"/>
+      <path d="M10,10 Q55,10 110,65" stroke="rgba(201,168,76,0.3)" stroke-width="0.5"/>
+      <circle cx="10" cy="10" r="4" fill="rgba(201,168,76,0.6)"/>
+    </svg>
+  </div>
+
+  <div class="welcome-card">
+    <div class="school-emblem">
+      <img src="LOGO KB TK.png" class="logo-img">
+    </div>
+    <div class="welcome-label" style="font-family:'Poppins',sans-serif;font-size:0.7rem;letter-spacing:0.3em;color:rgba(255,248,236,0.5);text-transform:uppercase;margin-bottom:0.5rem;">KB - TK Supriyadi</div>
+    <div class="welcome-title">Undangan Resmi</div>
+    <div class="welcome-subtitle">Akhirussanah<br>2025/2026</div>
+
+    <div class="divider-ornament">🌺</div>
+
+    <p class="welcome-desc">
+      Dengan penuh kebanggaan dan suka cita,<br>
+      kami mengundang Bapak/Ibu/Saudara/i<br>
+      untuk hadir dalam perayaan kelulusan<br>
+      putra-putri kami tercinta.
+    </p>
+
+    <p class="picker-label">✨ Silakan pilih nama Anda ✨</p>
+
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Cari nama undangan..." oninput="filterNames()">
+    </div>
+
+    <div class="names-grid" id="namesGrid"></div>
+
+    <button class="enter-btn" id="enterBtn" onclick="enterInvitation()">
+      🎓 Buka Undangan 🎓
+    </button>
+  </div>
+</div>
+
+<!-- ===== TRANSITION SCREEN ===== -->
+<div id="transition-screen" class="screen" style="display:none;">
+  <div class="transition-content">
+    <div class="transition-emoji">🎉</div>
+    <div class="transition-text">Selamat Datang!</div>
+    <div class="transition-name" id="transitionName"></div>
+    <div style="color:rgba(255,248,236,0.5);font-size:0.8rem;margin-top:1rem;font-family:'Poppins',sans-serif;">Membuka undangan istimewa...</div>
+  </div>
+</div>
+
+<!-- ===== INVITATION SCREEN ===== -->
+<div id="invitation-screen" class="screen" style="display:none;">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="batik-border"></div>
+
+    <div class="hero-ornament">🎓</div>
+    <div class="hero-label">Dengan Segala Kerendahan Hati</div>
+    <div class="hero-dengan-hormat">Kami mengundang yang terhormat,</div>
+    <div class="hero-recipient" id="recipientName">Nama Tamu</div>
+    <div class="hero-recipient-title" id="recipientTitle">Wali Murid / Undangan Khusus</div>
+
+    <p class="invitation-text">
+      Untuk hadir dan turut mendo'akan dalam acara<br>
+      <strong style="color:var(--gold-light);"> Pelepasan Ajang dan Kreasi Akhirussanah</strong><br>
+      Tahun Pelajaran 2025/2026
+    </p>
+
+    <div class="event-title-wrapper">
+      <div class="event-title-label">✦ Perayaan Kelulusan ✦</div>
+      <div class="event-title">Akhirussanah</div>
+      <div class="event-subtitle">KB · TK Supriyadi</div>
+    </div>
+
+    <div class="scroll-down" onclick="document.getElementById('detail').scrollIntoView({behavior:'smooth'})">
+      <span style="font-size:0.7rem;letter-spacing:0.2em;">LIHAT DETAIL</span>
+      <span class="arrow">⬇</span>
+    </div>
+
+    <div class="batik-border bottom"></div>
+  </section>
+
+  <!-- DETAIL ACARA -->
+  <section class="section" id="detail">
+    <div class="section-header">
+      <div class="ornament-line"><span>🌸</span></div>
+      <div class="section-title">Detail Acara</div>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-card">
+        <div class="icon">📅</div>
+        <div class="label">Hari & Tanggal</div>
+        <div class="value">Kamis</div>
+        <div class="sub-value">14 Mei 2026</div>
+      </div>
+      <div class="detail-card">
+        <div class="icon">🕗</div>
+        <div class="label">Waktu</div>
+        <div class="value">08.00 WIB</div>
+        <div class="sub-value">s/d selesai</div>
+      </div>
+      <div class="detail-card full-width">
+        <div class="icon">📍</div>
+        <div class="label">Tempat</div>
+        <div class="value">Gedung Balairung UPGRIS</div>
+        <div class="sub-value">Jl. Karangtempel, Semarang Timur</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RUNDOWN -->
+  <section class="section">
+    <div class="section-header">
+      <div class="ornament-line"><span>📋</span></div>
+      <div class="section-title">Susunan Acara</div>
+    </div>
+
+    <div class="rundown-list">
+      <div class="rundown-item">
+        <div class="rundown-time">07.30</div>
+        <div class="rundown-desc">
+          <div class="rundown-title">Registrasi & Penyambutan Tamu</div>
+          <div class="rundown-subtitle">Silakan registrasi ulang kehadiran</div>
+        </div>
+        <div class="rundown-emoji">📝</div>
+      </div>
+      <div class="rundown-item">
+        <div class="rundown-time">08.00</div>
+        <div class="rundown-desc">
+          <div class="rundown-title">Pembukaan & Tilawah Al-Qur'an</div>
+          <div class="rundown-subtitle">Pembacaan Ayat Suci Al-Qur'an</div>
+        </div>
+        <div class="rundown-emoji">📖</div>
+      </div>
+      <div class="rundown-item">
+        <div class="rundown-time">08.30</div>
+        <div class="rundown-desc">
+          <div class="rundown-title">Sambutan Kepala Sekolah</div>
+          <div class="rundown-subtitle">Laporan & sambutan resmi</div>
+        </div>
+        <div class="rundown-emoji">🎤</div>
+      </div>
+      <div class="rundown-item">
+        <div class="rundown-time">09.00</div>
+        <div class="rundown-desc">
+          <div class="rundown-title">Penampilan Seni Anak</div>
+          <div class="rundown-subtitle">Tari, nyanyi, dan drama mini</div>
+        </div>
+        <div class="rundown-emoji">🎭</div>
+      </div>
+      <div class="rundown-item">
+        <div class="rundown-time">10.00</div>
+        <div class="rundown-desc">
+          <div class="rundown-title">Wisuda & Penyerahan Ijazah</div>
+          <div class="rundown-subtitle">Prosesi kelulusan resmi</div>
+        </div>
+        <div class="rundown-emoji">🎓</div>
+      </div>
+      <div class="rundown-item">
+        <div class="rundown-time">10.45</div>
+        <div class="rundown-desc">
+          <div class="rundown-title">Do'a Bersama & Penutup</div>
+          <div class="rundown-subtitle">Do'a syukur & perpisahan</div>
+        </div>
+        <div class="rundown-emoji">🤲</div>
+      </div>
+      <div class="rundown-item">
+        <div class="rundown-time">11.00</div>
+        <div class="rundown-desc">
+          <div class="rundown-title">Ramah Tamah & Sesi Foto</div>
+          <div class="rundown-subtitle">Makan bersama & dokumentasi</div>
+        </div>
+        <div class="rundown-emoji">📸</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PENUTUP -->
+  <section class="section">
+    <div class="closing-card">
+      <div class="big-emoji">🌺</div>
+      <div class="closing-title">Kehadiran Anda, Kebahagiaan Kami</div>
+      <p class="closing-text">
+        Merupakan kehormatan dan kebahagiaan bagi kami<br>
+        apabila Bapak/Ibu/Saudara/i berkenan hadir<br>
+        untuk memberikan doa restu kepada<br>
+        putra-putri kami yang akan menapaki<br>
+        jenjang pendidikan berikutnya.
+      </p>
+      <div class="closing-school">🏫 KB-TK Supriyadi Semarang 🏫</div>
+      <div style="margin-top:1rem;font-family:'Poppins',sans-serif;font-size:0.75rem;color:rgba(255,248,236,0.4);">
+        "Mendidik dengan hati, meraih prestasi"
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div style="font-size:1.5rem;margin-bottom:0.5rem;">🌟 ❤️ 🌟</div>
+    <div class="footer-text">© 2025 KB-TK Supriyadi · Akhirussanah 2025/2026</div>
+    <div class="footer-text" style="margin-top:0.3rem;">Made with ❤️ for our wonderful graduates</div>
+  </footer>
+</div>
+
+<script>
+// ===== DATA NAMA =====
+const guestList = [
+  // Wali Murid KB-TK Supriyadi
+  { name: "Seluruh Bpk/Ibu Wali Murid KB-TK Supriyadi", title: "di Tempat" },
+
+  // Tamu Undangan Khusus
+  { name: "Ibu Siti Nurhayati, S.Pd., M.Pd", title: "Penilik PNFI" },
+  { name: "Bapak H. Moeh Taufiq Zuhri, M.E", title: "Pembina YPIA" },
+  { name: "Bapak H. Safari Abdullah, S.Ag", title: "Pengawas YPIA" },
+  { name: "Bapak Muh. Adib, ST", title: "Wakil Pengawas YPIA" },
+  { name: "Bapak Dr.H. Muhdi, SH., M.Hum", title: "Ketua Umum YPIA" },
+  { name: "Bapak Ir. H. Irawan Wisnu Wardhana, MS", title: "Wakil Ketua YPIA" },
+  { name: "Bapak Drs. Mundhochib", title: "Sekertaris dan Kepala Bagian Umum" },
+  { name: "Gustaf Fahri, S.E", title: "Wakil Sekertaris YPIA" },
+  { name: "Ibu Ika Kartika Yudha Ahmadi, SE", title: "Bendahara YPIA" },
+  { name: "Ibu Yuli Saparin Orbitianty, B.Sc", title: "Wakil Bendahara YPIA" },
+  { name: "Ibu Sri Windarti, S.Sos", title: "Bagian Umum" },
+  { name: "Ibu Dwi Shemi Wijaya C, S.Pd.", title: "Bagian Umum" },
+  { name: "Bapak Kiki Fredianto", title: "Bagian Umum" },
+  { name: "Bapak Caesar Dinar Palarto", title: "Bagian Umum" },
+  { name: "Bapak Karsono, S.Pd., M.Pd", title: "Kepala Sekolah SD Supriyadi 02" },
+  { name: "Ibu Lilik Puji Rahayu, S.Pd., M.Pd.", title: "Wakil Kepala SD Supriyadi 02" },
+  { name: "Ibu Nursekah, S.Pd", title: "Kepala Sekolah SD Supriyadi" },
+  { name: "Ibu Ulin Nafiah, S.Pd", title: "Wakil Kepala SD Supriyadi" },
+  { name: "Bapak Iwan Octavijanto", title: "Kepala Satpam dan OB" },
+  { name: "Para Guru & Karyawan KB-TK Supriyadi", title: "Keluarga Besar KB-TK Supriyadi" },
+  { name: "Yayasan Pendidikan Supriyadi", title: "Yayasan" },
+];
+
+let selectedGuest = null;
+
+// ===== RENDER NAMES =====
+function renderNames(list) {
+  const grid = document.getElementById('namesGrid');
+  if (list.length === 0) {
+    grid.innerHTML = '<div class="no-result">😔 Nama tidak ditemukan</div>';
+    return;
+  }
+  grid.innerHTML = list.map((guest, idx) => `
+    <button class="name-btn ${selectedGuest && selectedGuest.name === guest.name ? 'selected' : ''}"
+      onclick="selectName(${guestList.indexOf(guest)})">
+      ${guest.name}
+    </button>
+  `).join('');
+}
+
+function filterNames() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  const filtered = guestList.filter(g => g.name.toLowerCase().includes(q));
+  renderNames(filtered);
+}
+
+function selectName(idx) {
+  selectedGuest = guestList[idx];
+  document.querySelectorAll('.name-btn').forEach(btn => btn.classList.remove('selected'));
+  event.target.classList.add('selected');
+  const enterBtn = document.getElementById('enterBtn');
+  enterBtn.classList.add('visible');
+}
+
+// ===== ENTER INVITATION =====
+function enterInvitation() {
+  if (!selectedGuest) return;
+
+  // Show transition
+  document.getElementById('transition-screen').style.display = 'flex';
+  document.getElementById('welcome-screen').style.display = 'none';
+  document.getElementById('transitionName').textContent = selectedGuest.name;
+
+  // Confetti!
+  launchConfetti();
+
+  // After transition, show invitation
+  setTimeout(() => {
+    document.getElementById('transition-screen').style.display = 'none';
+    document.getElementById('invitation-screen').style.display = 'flex';
+    document.getElementById('recipientName').textContent = selectedGuest.name;
+    document.getElementById('recipientTitle').textContent = selectedGuest.title;
+    window.scrollTo(0,0);
+    startCountdown();
+    generateLeaves();
+  }, 2800);
+}
+
+// ===== CONFETTI =====
+function launchConfetti() {
+  const colors = ['#C9A84C','#F0D080','#7B1A1A','#2D6A4F','#52B788','#fff'];
+  const shapes = ['🎉','🎊','⭐','🌟','✨','🌺','🏵️'];
+  for (let i = 0; i < 40; i++) {
+    setTimeout(() => {
+      const el = document.createElement('div');
+      el.className = 'confetti-piece';
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.top = '-20px';
+      el.style.fontSize = (0.8 + Math.random() * 1.2) + 'rem';
+      el.style.animationDuration = (1.5 + Math.random() * 2) + 's';
+      el.textContent = shapes[Math.floor(Math.random() * shapes.length)];
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 4000);
+    }, i * 60);
+  }
+}
+
+// ===== COUNTDOWN =====
+function startCountdown() {
+  const targetDate = new Date('2025-06-14T08:00:00');
+  function update() {
+    const now = new Date();
+    const diff = targetDate - now;
+    if (diff <= 0) {
+      document.getElementById('days').textContent = '00';
+      document.getElementById('hours').textContent = '00';
+      document.getElementById('minutes').textContent = '00';
+      document.getElementById('seconds').textContent = '00';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('days').textContent = String(d).padStart(2,'0');
+    document.getElementById('hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('minutes').textContent = String(m).padStart(2,'0');
+    document.getElementById('seconds').textContent = String(s).padStart(2,'0');
+  }
+  update();
+  setInterval(update, 1000);
+}
+
+// ===== FLOATING LEAVES =====
+function generateLeaves() {
+  const container = document.getElementById('leaves');
+  const emojis = ['🌿','🍃','🌺','🌸','🌼','✨','⭐','🌹','🌻','🍀'];
+  for (let i = 0; i < 15; i++) {
+    const leaf = document.createElement('div');
+    leaf.className = 'leaf';
+    leaf.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    leaf.style.left = Math.random() * 100 + 'vw';
+    leaf.style.animationDuration = (8 + Math.random() * 12) + 's';
+    leaf.style.animationDelay = (Math.random() * 10) + 's';
+    leaf.style.fontSize = (0.8 + Math.random() * 1.2) + 'rem';
+    container.appendChild(leaf);
+  }
+}
+
+// Init
+renderNames(guestList);
+generateLeaves();
+</script>
+</body>
+</html>

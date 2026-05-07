@@ -1074,12 +1074,15 @@ function enterInvitation() {
   if (!selectedGuest) return;
 
 // AMBIL ELEMEN AUDIO
-  const music = document.getElementById('background-music');
-  
-  // MULAI PUTAR MUSIK
-  music.play().catch(error => {
-    console.log("Autoplay dicegah oleh browser, musik akan tetap dicoba diputar.");
-  });
+const music = document.getElementById('background-music');
+
+// PAKSA MUAT DAN PUTAR MUSIK
+music.load(); 
+music.play().then(() => {
+  console.log("Musik berhasil diputar, Yang Mulia!");
+}).catch(error => {
+  console.error("Autoplay dicegah atau file tidak ditemukan:", error);
+});
 
   // Kode transisi layar yang sudah ada
   document.getElementById('welcome-screen').style.display = 'none';

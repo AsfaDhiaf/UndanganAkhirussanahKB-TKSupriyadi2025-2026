@@ -1073,6 +1073,19 @@ function selectName(idx) {
 function enterInvitation() {
   if (!selectedGuest) return;
 
+// AMBIL ELEMEN AUDIO
+  const music = document.getElementById('background-music');
+  
+  // MULAI PUTAR MUSIK
+  music.play().catch(error => {
+    console.log("Autoplay dicegah oleh browser, musik akan tetap dicoba diputar.");
+  });
+
+  // Kode transisi layar yang sudah ada
+  document.getElementById('welcome-screen').style.display = 'none';
+  const transitionScreen = document.getElementById('transition-screen');
+  // ... (lanjutan kode Anda yang lama)
+
   // Show transition
   document.getElementById('transition-screen').style.display = 'flex';
   document.getElementById('welcome-screen').style.display = 'none';

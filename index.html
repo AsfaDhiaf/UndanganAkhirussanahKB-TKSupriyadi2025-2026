@@ -170,22 +170,16 @@ linear-gradient(
   background:
     linear-gradient(
       145deg,
-      rgba(255,248,240,0.95),
-      rgba(250,237,205,0.92)
+      rgba(16, 73, 68, 0.96),
+      rgba(32, 110, 102, 0.94)
     );
-    color: var(--brown);  
-    border: 2px solid var(--gold);
-    border-radius: 24px;
-    padding: 3rem 2.5rem;
-    max-width: 500px;
-    width: 100%;
-    text-align: center;
-    position: relative;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 60px rgba(201,168,76,0.2), inset 0 0 60px rgba(0,0,0,0.3);
-    animation: cardAppear 1s ease-out forwards;
-    margin: 0 auto;
-  }
+    
+  border: 2px solid #6FE7DD;
+
+  box-shadow:
+    0 0 40px rgba(79,209,197,0.25),
+    inset 0 0 30px rgba(255,255,255,0.03);
+}
 
   @keyframes cardAppear {
     from { opacity: 0; transform: translateY(40px) scale(0.95); }
@@ -443,13 +437,18 @@ color: #6D4C41 !important;
 #invitation-screen {
   flex-direction: column;
   align-items: center;
+
   background:
     linear-gradient(
-      180deg,
-      #FFFDF8 0%,
-      #FAF3E7 50%,
-      #F5E6D3 100%
-    );
+      rgba(10, 55, 52, 0.93),
+      rgba(20, 90, 84, 0.95)
+    ),
+    
+    url("https://upload.wikimedia.org/wikipedia/commons/2/26/Indonesia_relief_location_map.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
   /* HERO SECTION */
@@ -921,10 +920,12 @@ input {
 }
 
 /* Value pada detail */
-.detail-card .value,
-.detail-card .sub-value,
-.detail-card .label {
-  color: var(--brown);
+.detail-card,
+.closing-card,
+.rundown-item {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(111,231,221,0.25);
 }
 
 /* Rundown */
@@ -961,9 +962,9 @@ input {
 
 /* Tombol nama */
 .name-btn {
-  background: rgba(255,248,240,0.9);
-  color: var(--brown);
-  border: 1px solid rgba(176,137,104,0.35);
+  background: rgba(255,255,255,0.08);
+  color: #F5FFFD;
+  border: 1px solid rgba(111,231,221,0.3);
 }
 
 .name-btn:hover {
@@ -974,10 +975,12 @@ input {
 .name-btn.selected {
   background: linear-gradient(
     135deg,
-    #4DB6AC,
-    #B8F2E6
+    #4FD1C5,
+    #81E6D9
   );
-  color: #1F4D4D;
+
+  color: #083B37;
+  font-weight: 700;
 }
 
 /* Countdown */

@@ -7,62 +7,30 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --gold: #4DB6AC;
-  --gold-light: #B8F2E6;
-  --gold-dark: #0F766E;
+  --gold: #D4A373;
+  --gold-light: #FAEDCD;
+  --gold-dark: #B08968;
 
-  --maroon: #134E4A;
-  --maroon-dark: #042F2E;
+  --maroon: #A26769;
+  --maroon-dark: #6D4C41;
 
-  --cream: #ECFEFF;
-  --brown: #E6FFFA;
+  --cream: #FFF8F0;
+  --brown: #8B5E3C;
 
-  --green: #34D399;
-  --green-light: #99F6E4;
+  --green: #7F9F80;
+  --green-light: #B7C9A8;
 
-  --batik-bg: #022C22;
-
-  --text-main: #F0FDFA;
-  --text-soft: #CCFBF1;
-  --card-bg: rgba(15, 118, 110, 0.35);
+  --batik-bg: #F8F1E7;
 }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-body {
-  font-family: 'Poppins', sans-serif;
-
-  background:
-    linear-gradient(
-      180deg,
-      #022C22 0%,
-      #064E3B 35%,
-      #115E59 70%,
-      #0F766E 100%
-    );
-
-  overflow-x: hidden;
-  position: relative;
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-
-  background:
-    url("https://upload.wikimedia.org/wikipedia/commons/2/28/Indonesia_location_map.svg")
-    center center / 75% no-repeat;
-
-  opacity: 0.08;
-  pointer-events: none;
-  z-index: 0;
-
-  filter:
-    brightness(1.5)
-    contrast(1.2)
-    saturate(0);
-}
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--batik-bg);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
 
   /* ===== FLOATING DECORATIONS ===== */
   .floating-leaves {
@@ -97,30 +65,6 @@ body::before {
     z-index: 0;
   }
 
-  /* ===== ORNAMEN NUSANTARA ===== */
-.nusantara-pattern {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.08;
-  z-index: 0;
-
-  background-image:
-    url("data:image/svg+xml,%3Csvg width='120' height='120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%238B5E3C' stroke-width='1'%3E%3Cpath d='M20 20 Q60 0 100 20 Q120 60 100 100 Q60 120 20 100 Q0 60 20 20Z'/%3E%3Ccircle cx='60' cy='60' r='12'/%3E%3C/g%3E%3C/svg%3E");
-
-  background-size: 160px;
-  animation: batikMove 40s linear infinite;
-}
-
-@keyframes batikMove {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 300px 300px;
-  }
-}
-
   /* ===== SCREEN CONTAINER ===== */
   .screen {
     display: none;
@@ -139,19 +83,13 @@ body::before {
     position: relative;
   }
 
-.welcome-bg {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle at top, rgba(212,163,115,0.15), transparent 40%),
-linear-gradient(
-  180deg,
-  #F5FFFD 0%,
-  #DFF8F5 55%,
-  #CDEFE8 100%
-);
-  z-index: -1;
-}
+  .welcome-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      linear-gradient(180deg, #1A0A00 0%, #2D1500 50%, #1A0A00 100%);
+    z-index: -1;
+  }
 
   /* Ornamen sudut */
   .corner-ornament {
@@ -166,20 +104,20 @@ linear-gradient(
   .corner-ornament.bl { bottom: 0; left: 0; transform: scaleY(-1); }
   .corner-ornament.br { bottom: 0; right: 0; transform: scale(-1); }
 
-.welcome-card {
-  background:
-    linear-gradient(
-      145deg,
-      rgba(16, 73, 68, 0.96),
-      rgba(32, 110, 102, 0.94)
-    );
-    
-  border: 2px solid #6FE7DD;
-
-  box-shadow:
-    0 0 40px rgba(79,209,197,0.25),
-    inset 0 0 30px rgba(255,255,255,0.03);
-}
+  .welcome-card {
+    background: linear-gradient(145deg, rgba(201,168,76,0.12), rgba(90,30,0,0.3));
+    border: 2px solid var(--gold);
+    border-radius: 24px;
+    padding: 3rem 2.5rem;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 60px rgba(201,168,76,0.2), inset 0 0 60px rgba(0,0,0,0.3);
+    animation: cardAppear 1s ease-out forwards;
+    margin: 0 auto;
+  }
 
   @keyframes cardAppear {
     from { opacity: 0; transform: translateY(40px) scale(0.95); }
@@ -224,9 +162,6 @@ linear-gradient(
   }
 
   .welcome-title {
-    background: none !important;
--webkit-text-fill-color: #6D4C41 !important;
-color: #6D4C41 !important;
     font-family: 'Cinzel Decorative', serif;
     font-size: 1rem;
     color: var(--gold-light);
@@ -247,9 +182,6 @@ color: #6D4C41 !important;
   }
 
   .welcome-subtitle {
-    background: none !important;
--webkit-text-fill-color: #6D4C41 !important;
-color: #6D4C41 !important;
     font-family: 'Cinzel Decorative', serif;
     font-size: 1.6rem;
     font-weight: 700;
@@ -434,22 +366,11 @@ color: #6D4C41 !important;
   }
 
   /* ===== MAIN INVITATION SCREEN ===== */
-#invitation-screen {
-  flex-direction: column;
-  align-items: center;
-
-  background:
-    linear-gradient(
-      rgba(10, 55, 52, 0.93),
-      rgba(20, 90, 84, 0.95)
-    ),
-    
-    url("https://upload.wikimedia.org/wikipedia/commons/2/26/Indonesia_relief_location_map.jpg");
-
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
+  #invitation-screen {
+    flex-direction: column;
+    align-items: center;
+    background: #1A0A00;
+  }
 
   /* HERO SECTION */
   .hero {
@@ -465,18 +386,14 @@ color: #6D4C41 !important;
     text-align: center;
   }
 
-.hero-bg {
-  background:
-    radial-gradient(circle at top, rgba(52,211,153,0.18), transparent 45%),
-    radial-gradient(circle at bottom right, rgba(45,212,191,0.15), transparent 40%),
-    linear-gradient(
-      180deg,
-      #022C22 0%,
-      #064E3B 40%,
-      #115E59 70%,
-      #0F766E 100%
-    );
-}
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(123,26,26,0.4) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 30% 80%, rgba(201,168,76,0.1) 0%, transparent 60%),
+      linear-gradient(180deg, #0D0500 0%, #200800 30%, #2D1500 60%, #1A0800 100%);
+  }
 
   /* Batik border top */
   .batik-border {
@@ -562,16 +479,20 @@ color: #6D4C41 !important;
     margin-bottom: 0.5rem;
   }
 
-.event-title {
-  font-family: 'Cinzel Decorative', serif;
-  font-size: 2.2rem;
-  font-weight: 900;
-  line-height: 1.1;
-  color: #6D4C41;
-  background: none;
-  -webkit-text-fill-color: #6D4C41;
-  text-shadow: none;
-}
+  .event-title {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    line-height: 1.1;
+    animation: shimmer 3s linear infinite;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold-light), var(--gold), var(--gold-light), var(--gold-dark));
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+    filter: drop-shadow(0 0 20px rgba(201,168,76,0.3));
+  }
 
   .event-subtitle {
     font-family: 'Cinzel Decorative', serif;
@@ -625,9 +546,6 @@ color: #6D4C41 !important;
   .ornament-line::after { background: linear-gradient(90deg, var(--gold), transparent); }
 
   .section-title {
-    background: none !important;
--webkit-text-fill-color: #6D4C41 !important;
-color: #6D4C41 !important;
     font-family: 'Cinzel Decorative', serif;
     font-size: 1.3rem;
     color: var(--gold-light);
@@ -650,19 +568,16 @@ color: #6D4C41 !important;
     .detail-grid { grid-template-columns: 1fr; }
   }
 
-.detail-card {
-  background: rgba(15, 118, 110, 0.25);
-  backdrop-filter: blur(12px);
-
-  border: 1px solid rgba(153,246,228,0.25);
-
-  border-radius: 18px;
-  padding: 1.5rem 1.2rem;
-  text-align: center;
-  transition: all 0.3s;
-  position: relative;
-  overflow: hidden;
-}
+  .detail-card {
+    background: linear-gradient(145deg, rgba(201,168,76,0.1), rgba(90,20,0,0.2));
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 16px;
+    padding: 1.5rem 1.2rem;
+    text-align: center;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
   .detail-card::before {
     content: '';
     position: absolute;
@@ -735,24 +650,17 @@ color: #6D4C41 !important;
 
   /* RUNDOWN */
   .rundown-list { display: flex; flex-direction: column; gap: 1rem; }
-.rundown-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  padding: 1rem 1.2rem;
-
-  background: rgba(15, 118, 110, 0.22);
-
-  border: 1px solid rgba(153,246,228,0.2);
-
-  border-radius: 14px;
-
-  transition: all 0.3s;
-
-  border-left: 3px solid #5EEAD4;
-
-  backdrop-filter: blur(10px);
-}
+  .rundown-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    background: rgba(201,168,76,0.05);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 12px;
+    transition: all 0.3s;
+    border-left: 3px solid var(--gold);
+  }
   .rundown-item:hover { 
     background: rgba(201,168,76,0.1); transform: translateX(4px);
     font-family: 'Cinzel Decorative', serif;
@@ -776,23 +684,15 @@ color: #6D4C41 !important;
   .rundown-emoji { font-size: 1.5rem; }
 
   /* PENUTUP */
-.closing-card {
-  background: rgba(15, 118, 110, 0.28);
-
-  backdrop-filter: blur(14px);
-
-  border: 1px solid rgba(153,246,228,0.25);
-
-  border-radius: 24px;
-
-  padding: 2.5rem 2rem;
-
-  text-align: center;
-
-  position: relative;
-
-  overflow: hidden;
-}
+  .closing-card {
+    background: linear-gradient(145deg, rgba(123,26,26,0.3), rgba(201,168,76,0.1));
+    border: 1px solid var(--gold);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
   .closing-card::before {
     content: '';
     position: absolute;
@@ -802,9 +702,6 @@ color: #6D4C41 !important;
   }
   .closing-card .big-emoji { font-size: 4rem; animation: floatUpDown 3s ease-in-out infinite; }
   .closing-title {
-    background: none !important;
--webkit-text-fill-color: #6D4C41 !important;
-color: #6D4C41 !important;
     font-family: 'Cinzel Decorative', serif;
     font-size: 1.3rem;
     color: var(--gold-light);
@@ -857,186 +754,6 @@ color: #6D4C41 !important;
     from { opacity: 0; }
     to { opacity: 1; }
   }
-
-/* ===== WARNA GLOBAL KREM ===== */
-
-/* Semua teks utama */
-body,
-p,
-div,
-span,
-button,
-input {
-  color: var(--brown);
-}
-
-/* Welcome Card */
-.welcome-card {
-  background: linear-gradient(
-    145deg,
-    rgba(255,248,240,0.98),
-    rgba(250,237,205,0.96)
-  );
-  color: var(--brown);
-}
-
-/* Hero background */
-.hero-bg {
-  background:
-    radial-gradient(circle at top, rgba(212,163,115,0.15), transparent 45%),
-    radial-gradient(circle at bottom right, rgba(176,137,104,0.12), transparent 40%),
-    linear-gradient(
-      180deg,
-      #FFF8F0 0%,
-      #FAEDCD 50%,
-      #F5E6D3 100%
-    );
-}
-
-.hero-label,
-.hero-dengan-hormat,
-.hero-recipient,
-.hero-recipient-title,
-.invitation-text,
-.event-subtitle,
-.section-title,
-.closing-title,
-.closing-text,
-.footer-text,
-.picker-label,
-.welcome-desc {
-  color: var(--brown) !important;
-  -webkit-text-fill-color: unset !important;
-}
-
-/* Card detail */
-.detail-card {
-  background: linear-gradient(
-    145deg,
-    rgba(255,248,240,0.96),
-    rgba(250,237,205,0.9)
-  );
-  color: var(--brown);
-}
-
-/* Value pada detail */
-.detail-card,
-.closing-card,
-.rundown-item {
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(111,231,221,0.25);
-}
-
-/* Rundown */
-.rundown-item {
-  background: rgba(255,248,240,0.9);
-  border: 1px solid rgba(176,137,104,0.3);
-}
-
-.rundown-title,
-.rundown-subtitle {
-  color: var(--brown);
-}
-
-/* Closing card */
-.closing-card {
-  background: linear-gradient(
-    145deg,
-    rgba(255,248,240,0.98),
-    rgba(250,237,205,0.92)
-  );
-  border: 1px solid var(--gold-dark);
-}
-
-/* Input search */
-.search-box input {
-  background: rgba(255,248,240,0.95);
-  color: var(--brown);
-  border: 1.5px solid rgba(176,137,104,0.4);
-}
-
-.search-box input::placeholder {
-  color: rgba(93,64,55,0.5);
-}
-
-/* Tombol nama */
-.name-btn {
-  background: rgba(255,255,255,0.08);
-  color: #F5FFFD;
-  border: 1px solid rgba(111,231,221,0.3);
-}
-
-.name-btn:hover {
-  background: rgba(250,237,205,1);
-  color: var(--brown);
-}
-
-.name-btn.selected {
-  background: linear-gradient(
-    135deg,
-    #4FD1C5,
-    #81E6D9
-  );
-
-  color: #083B37;
-  font-weight: 700;
-}
-
-/* Countdown */
-.countdown-number {
-  color: #1F4D4D;
-  background: linear-gradient(
-    135deg,
-    #B8F2E6,
-    #F5FFFD
-  );
-  border: 2px solid #4DB6AC;
-}
-
-/* Footer */
-.footer {
-  background: #FAEDCD;
-}
-
-/* ===== TEXT COLORS ===== */
-
-.hero-label,
-.hero-dengan-hormat,
-.hero-recipient-title,
-.invitation-text,
-.event-subtitle,
-.section-title,
-.closing-text,
-.footer-text,
-.picker-label,
-.welcome-desc,
-.rundown-subtitle,
-.detail-card .sub-value {
-  color: #D1FAE5 !important;
-}
-
-.hero-recipient,
-.event-title,
-.closing-title,
-.detail-card .value,
-.rundown-title {
-  color: #FFFFFF !important;
-}
-
-.detail-card .label,
-.event-title-label,
-.countdown-label {
-  color: #99F6E4 !important;
-}
-.event-title,
-.hero-recipient,
-.section-title {
-  text-shadow:
-    0 0 10px rgba(94,234,212,0.4),
-    0 0 25px rgba(45,212,191,0.3);
-}
-
 </style>
 </head>
 <body>
@@ -1048,7 +765,6 @@ input {
 <!-- FLOATING LEAVES -->
 <div class="floating-leaves" id="leaves"></div>
 <div class="batik-pattern"></div>
-<div class="nusantara-pattern"></div>
 
 <!-- ===== WELCOME SCREEN ===== -->
 <div id="welcome-screen" class="screen active">

@@ -196,6 +196,9 @@ body {
   }
 
   .welcome-title {
+    background: none !important;
+-webkit-text-fill-color: #6D4C41 !important;
+color: #6D4C41 !important;
     font-family: 'Cinzel Decorative', serif;
     font-size: 1rem;
     color: var(--gold-light);
@@ -216,6 +219,9 @@ body {
   }
 
   .welcome-subtitle {
+    background: none !important;
+-webkit-text-fill-color: #6D4C41 !important;
+color: #6D4C41 !important;
     font-family: 'Cinzel Decorative', serif;
     font-size: 1.6rem;
     font-weight: 700;
@@ -519,20 +525,16 @@ body {
     margin-bottom: 0.5rem;
   }
 
-  .event-title {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 2.2rem;
-    font-weight: 900;
-    line-height: 1.1;
-    animation: shimmer 3s linear infinite;
-    background: linear-gradient(90deg, var(--gold-dark), var(--gold-light), var(--gold), var(--gold-light), var(--gold-dark));
-    background-size: 200%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: none;
-    filter: drop-shadow(0 0 20px rgba(201,168,76,0.3));
-  }
+.event-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  line-height: 1.1;
+  color: #6D4C41;
+  background: none;
+  -webkit-text-fill-color: #6D4C41;
+  text-shadow: none;
+}
 
   .event-subtitle {
     font-family: 'Cinzel Decorative', serif;
@@ -586,6 +588,9 @@ body {
   .ornament-line::after { background: linear-gradient(90deg, var(--gold), transparent); }
 
   .section-title {
+    background: none !important;
+-webkit-text-fill-color: #6D4C41 !important;
+color: #6D4C41 !important;
     font-family: 'Cinzel Decorative', serif;
     font-size: 1.3rem;
     color: var(--gold-light);
@@ -747,6 +752,9 @@ body {
   }
   .closing-card .big-emoji { font-size: 4rem; animation: floatUpDown 3s ease-in-out infinite; }
   .closing-title {
+    background: none !important;
+-webkit-text-fill-color: #6D4C41 !important;
+color: #6D4C41 !important;
     font-family: 'Cinzel Decorative', serif;
     font-size: 1.3rem;
     color: var(--gold-light);
@@ -799,6 +807,144 @@ body {
     from { opacity: 0; }
     to { opacity: 1; }
   }
+
+/* ===== WARNA GLOBAL KREM ===== */
+
+/* Semua teks utama */
+body,
+p,
+div,
+span,
+button,
+input {
+  color: var(--brown);
+}
+
+/* Welcome Card */
+.welcome-card {
+  background: linear-gradient(
+    145deg,
+    rgba(255,248,240,0.98),
+    rgba(250,237,205,0.96)
+  );
+  color: var(--brown);
+}
+
+/* Hero background */
+.hero-bg {
+  background:
+    radial-gradient(circle at top, rgba(212,163,115,0.15), transparent 45%),
+    radial-gradient(circle at bottom right, rgba(176,137,104,0.12), transparent 40%),
+    linear-gradient(
+      180deg,
+      #FFF8F0 0%,
+      #FAEDCD 50%,
+      #F5E6D3 100%
+    );
+}
+
+/* Judul dan teks */
+.hero-label,
+.hero-dengan-hormat,
+.hero-recipient,
+.hero-recipient-title,
+.invitation-text,
+.event-subtitle,
+.section-title,
+.closing-title,
+.closing-text,
+.footer-text,
+.picker-label,
+.welcome-desc {
+  color: var(--brown) !important;
+  -webkit-text-fill-color: unset !important;
+}
+
+/* Card detail */
+.detail-card {
+  background: linear-gradient(
+    145deg,
+    rgba(255,248,240,0.96),
+    rgba(250,237,205,0.9)
+  );
+  color: var(--brown);
+}
+
+/* Value pada detail */
+.detail-card .value,
+.detail-card .sub-value,
+.detail-card .label {
+  color: var(--brown);
+}
+
+/* Rundown */
+.rundown-item {
+  background: rgba(255,248,240,0.9);
+  border: 1px solid rgba(176,137,104,0.3);
+}
+
+.rundown-title,
+.rundown-subtitle {
+  color: var(--brown);
+}
+
+/* Closing card */
+.closing-card {
+  background: linear-gradient(
+    145deg,
+    rgba(255,248,240,0.98),
+    rgba(250,237,205,0.92)
+  );
+  border: 1px solid var(--gold-dark);
+}
+
+/* Input search */
+.search-box input {
+  background: rgba(255,248,240,0.95);
+  color: var(--brown);
+  border: 1.5px solid rgba(176,137,104,0.4);
+}
+
+.search-box input::placeholder {
+  color: rgba(93,64,55,0.5);
+}
+
+/* Tombol nama */
+.name-btn {
+  background: rgba(255,248,240,0.9);
+  color: var(--brown);
+  border: 1px solid rgba(176,137,104,0.35);
+}
+
+.name-btn:hover {
+  background: rgba(250,237,205,1);
+  color: var(--brown);
+}
+
+.name-btn.selected {
+  background: linear-gradient(
+    135deg,
+    #D4A373,
+    #FAEDCD
+  );
+  color: var(--brown);
+}
+
+/* Countdown */
+.countdown-number {
+  color: var(--brown);
+  background: linear-gradient(
+    135deg,
+    #FAEDCD,
+    #FFF8F0
+  );
+}
+
+/* Footer */
+.footer {
+  background: #FAEDCD;
+}
+
 </style>
 </head>
 <body>

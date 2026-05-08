@@ -379,19 +379,121 @@
   }
 
   /* ===== MAIN INVITATION SCREEN ===== */
+/* ===== ANIMATED NUSANTARA BACKGROUND ===== */
+
+#invitation-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    url("peta-indonesia-png.png"),
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.08), transparent 25%),
+    radial-gradient(circle at 80% 70%, rgba(255,255,255,0.06), transparent 25%);
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 75%, cover, cover;
+
+  opacity: 0.12;
+  z-index: 0;
+
+  animation:
+    mapFloat 12s ease-in-out infinite alternate,
+    mapGlow 6s ease-in-out infinite;
+}
+
+/* Ornamen batik bergerak */
+#invitation-screen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    repeating-radial-gradient(
+      circle at center,
+      rgba(255,255,255,0.025) 0px,
+      rgba(255,255,255,0.025) 2px,
+      transparent 2px,
+      transparent 40px
+    );
+
+  opacity: 0.25;
+  animation: batikMove 25s linear infinite;
+
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Gradient bergerak */
+@keyframes gradientMove {
+  0% {
+    background-position: left top;
+  }
+  50% {
+    background-position: right bottom;
+  }
+  100% {
+    background-position: left top;
+  }
+}
+
+/* Peta nusantara melayang */
+@keyframes mapFloat {
+  0% {
+    transform: scale(1) translateY(0px);
+  }
+  100% {
+    transform: scale(1.05) translateY(-10px);
+  }
+}
+
+/* Glow nusantara */
+@keyframes mapGlow {
+  0%,100% {
+    opacity: 0.10;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.1));
+  }
+  50% {
+    opacity: 0.18;
+    filter: drop-shadow(0 0 25px rgba(255,255,255,0.25));
+  }
+}
+
+/* Motif bergerak */
+@keyframes batikMove {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(60px);
+  }
+}
+
+.hero,
+.section,
+.footer {
+  position: relative;
+  z-index: 2;
+}
+
 #invitation-screen {
   flex-direction: column;
   align-items: center;
+  position: relative;
+  overflow: hidden;
+
   background:
     linear-gradient(
       180deg,
-      #031F1F 0%,
-      #063B3B 35%,
-      #0B6E6E 70%,
-      #16A6A6 100%
+      #0a4f4f 0%,
+      #0f7c7c 35%,
+      #18a8a8 70%,
+      #46d6c4 100%
     );
-  position: relative;
-  overflow: hidden;
+
+  animation: gradientMove 12s ease infinite;
+  background-size: 200% 200%;
 }
 
   /* HERO SECTION */
@@ -1098,7 +1200,7 @@ const guestList = [
   { name: "Bapak Dr.H. Muhdi, SH., M.Hum", title: "Ketua Umum YPIA" },
   { name: "Bapak Ir. H. Irawan Wisnu Wardhana, MS", title: "Wakil Ketua YPIA" },
   { name: "Bapak Drs. Mundhochib", title: "Sekertaris dan Kepala Bagian Umum" },
-  { name: "Gustaf Fahri, S.E", title: "Wakil Sekertaris YPIA" },
+  { name: "Bapak Gustaf Fahri, S.E", title: "Wakil Sekertaris YPIA" },
   { name: "Ibu Ika Kartika Yudha Ahmadi, SE", title: "Bendahara YPIA" },
   { name: "Ibu Yuli Saparin Orbitianty, B.Sc", title: "Wakil Bendahara YPIA" },
   { name: "Ibu Sri Windarti, S.Sos", title: "Bagian Umum" },
@@ -1112,7 +1214,7 @@ const guestList = [
   { name: "Bapak Iwan Octavijanto", title: "Kepala Satpam dan OB" },
   { name: "Bapak Rohmat, S.Pd.I", title: "Tamu Undangan" },
   { name: "Ibu Rekyanti Murni", title: "Tamu Undangan" },
-  { name: "Ibu Supartini", title: "Tamu Undangan" },
+  { name: "Ibu Hj. Supartini Wiyono", title: "Tamu Undangan" },
   { name: "Mama Elzena", title: "Stand Oriflame dan STFIn Brain Semarang" },
   { name: "Mama Shaki", title: "Stand AHE" },
   { name: "Pak Shodiq", title: "Stand Finger Painting" },

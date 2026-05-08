@@ -411,6 +411,7 @@
 .hero-bg {
   position: absolute;
   inset: 0;
+  z-index: 0;
   background:
     radial-gradient(
       ellipse 80% 60% at 50% 40%,
@@ -434,12 +435,17 @@
 .indonesia-map {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: url('https://upload.wikimedia.org/wikipedia/commons/2/26/Indonesia_location_map.svg') center center no-repeat;
   background-size: 75%;
-  opacity: 0.05;
-  z-index: 0;
+  opacity: 0.08;
   pointer-events: none;
   filter: brightness(2) saturate(0);
+}
+
+.hero > *:not(.hero-bg):not(.indonesia-map):not(.batik-border) {
+  position: relative;
+  z-index: 2;
 }
 
   /* Batik border top */
@@ -815,7 +821,7 @@
   z-index: 1;
 }
 
-.hero,
+.hero ,
 .section,
 .footer {
   background: transparent;

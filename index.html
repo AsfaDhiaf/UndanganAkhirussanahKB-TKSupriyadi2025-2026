@@ -6,27 +6,35 @@
 <title>Undangan Akhirussanah KB-TK Supriyadi</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --gold: #C9A84C;
-    --gold-light: #F0D080;
-    --gold-dark: #8B6914;
-    --maroon: #7B1A1A;
-    --maroon-dark: #4A0E0E;
-    --cream: #FFF8EC;
-    --brown: #5C3A1E;
-    --green: #2D6A4F;
-    --green-light: #52B788;
-    --batik-bg: #1A0A00;
-  }
+:root {
+  --gold: #D4A373;
+  --gold-light: #FAEDCD;
+  --gold-dark: #B08968;
+
+  --maroon: #A26769;
+  --maroon-dark: #6D4C41;
+
+  --cream: #FFF8F0;
+  --brown: #8B5E3C;
+
+  --green: #7F9F80;
+  --green-light: #B7C9A8;
+
+  --batik-bg: #F8F1E7;
+}
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  body {
-    font-family: 'Poppins', sans-serif;
-    background: var(--batik-bg);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+body {
+  font-family: 'Poppins', sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(212,163,115,0.15), transparent 40%),
+    radial-gradient(circle at bottom right, rgba(176,137,104,0.15), transparent 40%),
+    var(--batik-bg);
+
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
 
   /* ===== FLOATING DECORATIONS ===== */
   .floating-leaves {
@@ -60,6 +68,30 @@
     pointer-events: none;
     z-index: 0;
   }
+
+  /* ===== ORNAMEN NUSANTARA ===== */
+.nusantara-pattern {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  z-index: 0;
+
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='120' height='120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%238B5E3C' stroke-width='1'%3E%3Cpath d='M20 20 Q60 0 100 20 Q120 60 100 100 Q60 120 20 100 Q0 60 20 20Z'/%3E%3Ccircle cx='60' cy='60' r='12'/%3E%3C/g%3E%3C/svg%3E");
+
+  background-size: 160px;
+  animation: batikMove 40s linear infinite;
+}
+
+@keyframes batikMove {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 300px 300px;
+  }
+}
 
   /* ===== SCREEN CONTAINER ===== */
   .screen {
@@ -100,8 +132,14 @@
   .corner-ornament.bl { bottom: 0; left: 0; transform: scaleY(-1); }
   .corner-ornament.br { bottom: 0; right: 0; transform: scale(-1); }
 
-  .welcome-card {
-    background: linear-gradient(145deg, rgba(201,168,76,0.12), rgba(90,30,0,0.3));
+.welcome-card {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,248,240,0.95),
+      rgba(250,237,205,0.92)
+    );
+    color: var(--brown);  
     border: 2px solid var(--gold);
     border-radius: 24px;
     padding: 3rem 2.5rem;
@@ -382,14 +420,20 @@
     text-align: center;
   }
 
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background: 
-      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(123,26,26,0.4) 0%, transparent 70%),
-      radial-gradient(ellipse 60% 40% at 30% 80%, rgba(201,168,76,0.1) 0%, transparent 60%),
-      linear-gradient(180deg, #0D0500 0%, #200800 30%, #2D1500 60%, #1A0800 100%);
-  }
+.hero-bg {
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(circle at top, rgba(212,163,115,0.25), transparent 45%),
+    radial-gradient(circle at bottom right, rgba(176,137,104,0.2), transparent 40%),
+    linear-gradient(
+      180deg,
+      #FFF8F0 0%,
+      #FAEDCD 50%,
+      #F5E6D3 100%
+    );
+}
 
   /* Batik border top */
   .batik-border {
@@ -565,7 +609,12 @@
   }
 
   .detail-card {
-    background: linear-gradient(145deg, rgba(201,168,76,0.1), rgba(90,20,0,0.2));
+    background:
+    linear-gradient(
+      145deg,
+      rgba(255,248,240,0.9),
+      rgba(250,237,205,0.8)
+    );
     border: 1px solid rgba(201,168,76,0.3);
     border-radius: 16px;
     padding: 1.5rem 1.2rem;
@@ -761,6 +810,7 @@
 <!-- FLOATING LEAVES -->
 <div class="floating-leaves" id="leaves"></div>
 <div class="batik-pattern"></div>
+<div class="nusantara-pattern"></div>
 
 <!-- ===== WELCOME SCREEN ===== -->
 <div id="welcome-screen" class="screen active">

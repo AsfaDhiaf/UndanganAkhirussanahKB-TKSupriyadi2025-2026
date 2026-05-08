@@ -7,20 +7,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --gold: #D4A373;
-  --gold-light: #FAEDCD;
-  --gold-dark: #B08968;
+  --gold: #4DB6AC;
+  --gold-light: #DFF8F5;
+  --gold-dark: #2A9D8F;
 
-  --maroon: #A26769;
-  --maroon-dark: #6D4C41;
+  --maroon: #5F8D7E;
+  --maroon-dark: #2F5D62;
 
-  --cream: #FFF8F0;
-  --brown: #8B5E3C;
+  --cream: #F5FFFD;
+  --brown: #2F5D62;
 
-  --green: #7F9F80;
-  --green-light: #B7C9A8;
+  --green: #6FCF97;
+  --green-light: #B8F2E6;
 
-  --batik-bg: #F8F1E7;
+  --batik-bg: #EAFBF8;
 }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -28,9 +28,14 @@
 body {
   font-family: 'Poppins', sans-serif;
   background:
-    radial-gradient(circle at top left, rgba(212,163,115,0.15), transparent 40%),
-    radial-gradient(circle at bottom right, rgba(176,137,104,0.15), transparent 40%),
-    var(--batik-bg);
+    radial-gradient(circle at top left, rgba(212,163,115,0.18), transparent 40%),
+    radial-gradient(circle at bottom right, rgba(176,137,104,0.12), transparent 40%),
+linear-gradient(
+  180deg,
+  #F5FFFD 0%,
+  #E8F8F5 45%,
+  #D6F5EE 100%
+);
 
   background-attachment: fixed;
   overflow-x: hidden;
@@ -111,13 +116,19 @@ body {
     position: relative;
   }
 
-  .welcome-bg {
-    position: absolute;
-    inset: 0;
-    background: 
-      linear-gradient(180deg, #1A0A00 0%, #2D1500 50%, #1A0A00 100%);
-    z-index: -1;
-  }
+.welcome-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top, rgba(212,163,115,0.15), transparent 40%),
+linear-gradient(
+  180deg,
+  #F5FFFD 0%,
+  #DFF8F5 55%,
+  #CDEFE8 100%
+);
+  z-index: -1;
+}
 
   /* Ornamen sudut */
   .corner-ornament {
@@ -406,11 +417,17 @@ color: #6D4C41 !important;
   }
 
   /* ===== MAIN INVITATION SCREEN ===== */
-  #invitation-screen {
-    flex-direction: column;
-    align-items: center;
-    background: #1A0A00;
-  }
+#invitation-screen {
+  flex-direction: column;
+  align-items: center;
+  background:
+    linear-gradient(
+      180deg,
+      #FFFDF8 0%,
+      #FAF3E7 50%,
+      #F5E6D3 100%
+    );
+}
 
   /* HERO SECTION */
   .hero {
@@ -427,17 +444,14 @@ color: #6D4C41 !important;
   }
 
 .hero-bg {
-  position: absolute;
-  inset: 0;
-
   background:
-    radial-gradient(circle at top, rgba(212,163,115,0.25), transparent 45%),
-    radial-gradient(circle at bottom right, rgba(176,137,104,0.2), transparent 40%),
+    radial-gradient(circle at top, rgba(77,182,172,0.18), transparent 45%),
+    radial-gradient(circle at bottom right, rgba(42,157,143,0.15), transparent 40%),
     linear-gradient(
       180deg,
-      #FFF8F0 0%,
-      #FAEDCD 50%,
-      #F5E6D3 100%
+      #F5FFFD 0%,
+      #DFF8F5 50%,
+      #CDEFE8 100%
     );
 }
 
@@ -614,12 +628,11 @@ color: #6D4C41 !important;
   }
 
   .detail-card {
-    background:
-    linear-gradient(
-      145deg,
-      rgba(255,248,240,0.9),
-      rgba(250,237,205,0.8)
-    );
+  background: linear-gradient(
+    145deg,
+    rgba(245,255,253,0.96),
+    rgba(223,248,245,0.92)
+  );
     border: 1px solid rgba(201,168,76,0.3);
     border-radius: 16px;
     padding: 1.5rem 1.2rem;
@@ -735,7 +748,11 @@ color: #6D4C41 !important;
 
   /* PENUTUP */
   .closing-card {
-    background: linear-gradient(145deg, rgba(123,26,26,0.3), rgba(201,168,76,0.1));
+  background: linear-gradient(
+    145deg,
+    rgba(245,255,253,0.98),
+    rgba(223,248,245,0.92)
+  );
     border: 1px solid var(--gold);
     border-radius: 20px;
     padding: 2.5rem 2rem;
@@ -924,20 +941,21 @@ input {
 .name-btn.selected {
   background: linear-gradient(
     135deg,
-    #D4A373,
-    #FAEDCD
+    #4DB6AC,
+    #B8F2E6
   );
-  color: var(--brown);
+  color: #1F4D4D;
 }
 
 /* Countdown */
 .countdown-number {
-  color: var(--brown);
+  color: #1F4D4D;
   background: linear-gradient(
     135deg,
-    #FAEDCD,
-    #FFF8F0
+    #B8F2E6,
+    #F5FFFD
   );
+  border: 2px solid #4DB6AC;
 }
 
 /* Footer */

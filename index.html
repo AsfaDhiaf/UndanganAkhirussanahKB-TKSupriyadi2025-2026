@@ -7,24 +7,23 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --gold: #D4A373;
-  --gold-light: #FAEDCD;
-  --gold-dark: #B08968;
+  --gold: #D7FBE8;
+  --gold-light: #F2FFF8;
+  --gold-dark: #6EE7C8;
 
-  --maroon: #A26769;
-  --maroon-dark: #6D4C41;
+  --maroon: #0F4C4C;
+  --maroon-dark: #062F2F;
 
-  --cream: #FFF8F0;
-  --brown: #8B5E3C;
+  --cream: #F4FFFD;
+  --brown: #0B3D3D;
 
-  --green: #7F9F80;
-  --green-light: #B7C9A8;
+  --green: #16A6A6;
+  --green-light: #7DE2D1;
 
-  --batik-bg: #F8F1E7;
+  --batik-bg: #031F1F;
 
-  /* tambahan */
-  --text-main: #FFF8F0;
-  --text-soft: rgba(255,248,236,0.75);
+  --text-main: #F4FFFD;
+  --text-soft: rgba(244,255,253,0.75);
 }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -380,11 +379,20 @@
   }
 
   /* ===== MAIN INVITATION SCREEN ===== */
-  #invitation-screen {
-    flex-direction: column;
-    align-items: center;
-    background: #1A0A00;
-  }
+#invitation-screen {
+  flex-direction: column;
+  align-items: center;
+  background:
+    linear-gradient(
+      180deg,
+      #031F1F 0%,
+      #063B3B 35%,
+      #0B6E6E 70%,
+      #16A6A6 100%
+    );
+  position: relative;
+  overflow: hidden;
+}
 
   /* HERO SECTION */
   .hero {
@@ -421,6 +429,17 @@
       #0b8f8f 75%,
       #16a6a6 100%
     );
+}
+
+.indonesia-map {
+  position: absolute;
+  inset: 0;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/2/26/Indonesia_location_map.svg') center center no-repeat;
+  background-size: 75%;
+  opacity: 0.05;
+  z-index: 0;
+  pointer-events: none;
+  filter: brightness(2) saturate(0);
 }
 
   /* Batik border top */
@@ -597,7 +616,11 @@
   }
 
   .detail-card {
-    background: linear-gradient(145deg, rgba(201,168,76,0.1), rgba(90,20,0,0.2));
+    background: linear-gradient(
+      145deg,
+      rgba(22,166,166,0.18),
+      rgba(3,31,31,0.75)
+        );
     border: 1px solid rgba(201,168,76,0.3);
     border-radius: 16px;
     padding: 1.5rem 1.2rem;
@@ -683,14 +706,14 @@
     align-items: flex-start;
     gap: 1rem;
     padding: 1rem 1.2rem;
-    background: rgba(201,168,76,0.05);
+       background: rgba(22,166,166,0.10);
     border: 1px solid rgba(201,168,76,0.2);
     border-radius: 12px;
     transition: all 0.3s;
     border-left: 3px solid var(--gold);
   }
   .rundown-item:hover { 
-    background: rgba(201,168,76,0.1); transform: translateX(4px);
+      background: rgba(22,166,166,0.18); transform: translateX(4px);
     font-family: 'Cinzel Decorative', serif;
     font-size: 0.75rem;
     color: var(--gold);
@@ -713,7 +736,11 @@
 
   /* PENUTUP */
   .closing-card {
-    background: linear-gradient(145deg, rgba(123,26,26,0.3), rgba(201,168,76,0.1));
+    background: linear-gradient(
+      145deg,
+      rgba(6,95,95,0.85),
+      rgba(22,166,166,0.25)
+        );
     border: 1px solid var(--gold);
     border-radius: 20px;
     padding: 2.5rem 2rem;
@@ -782,6 +809,18 @@
     from { opacity: 0; }
     to { opacity: 1; }
   }
+
+.section {
+  position: relative;
+  z-index: 1;
+}
+
+.hero,
+.section,
+.footer {
+  background: transparent;
+}
+
 </style>
 </head>
 <body>
@@ -876,6 +915,7 @@
 
   <!-- HERO -->
   <section class="hero">
+    <div class="indonesia-map"></div>
     <div class="hero-bg"></div>
     <div class="batik-border"></div>
 
